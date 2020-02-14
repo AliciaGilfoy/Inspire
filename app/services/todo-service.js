@@ -2,7 +2,7 @@ import store from "../store.js";
 
 // @ts-ignore
 const todoApi = axios.create({
-  baseURL: "https://bcw-sandbox.herokuapp.com/api/YOURNAME/todos/",
+  baseURL: "https://bcw-sandbox.herokuapp.com/api/Alicia/todos/",
   timeout: 8000
 });
 
@@ -32,6 +32,10 @@ class TodoService {
     //TODO Work through this one on your own
     //		what is the request type
     //		once the response comes back, what do you need to insure happens?
+  }
+
+  constructor() {
+    console.log("todo service works")
   }
 }
 
