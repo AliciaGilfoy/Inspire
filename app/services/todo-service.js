@@ -1,7 +1,8 @@
 import store from "../store.js";
+import Todo from "../models/Todo.js";
 
 // @ts-ignore
-const todoApi = axios.create({
+const _todoApi = axios.create({
   baseURL: "https://bcw-sandbox.herokuapp.com/api/Alicia/todos/",
   timeout: 8000
 });
@@ -9,26 +10,33 @@ const todoApi = axios.create({
 class TodoService {
   getTodos() {
     console.log("Getting the Todo List");
-    todoApi.get();
+    _todoApi.get();
     //TODO Handle this response from the server
   }
 
-  addTodoAsync(todo) {
-    todoApi.post("", todo);
-    //TODO Handle this response from the server (hint: what data comes back, do you want this?)
+  addTodo(todo) {
+    _todoApi.post("", todo)
+      .then(res => {
+        let newTodo = new Todo(res.data.data)
+        console.log(newTodo)
+        let todos = [...store.State.todos, newTodo]
+        store.commit("todos", todos)
+      }).catch(error => {
+        console.error(error);
+      });
   }
 
-  toggleTodoStatusAsync(todoId) {
+  toggleTodoStatus(todoId) {
     let todo = store.State.todos.find(todo => todo._id == todoId);
     //TODO Make sure that you found a todo,
     //		and if you did find one
     //		change its completed status to whatever it is not (ex: false => true or true => false)
 
-    todoApi.put(todoId, todo);
+    _todoApi.put(todoId, todo);
     //TODO do you care about this data? or should you go get something else?
   }
 
-  removeTodoAsync(todoId) {
+  removeTodo(todoId) {
     //TODO Work through this one on your own
     //		what is the request type
     //		once the response comes back, what do you need to insure happens?

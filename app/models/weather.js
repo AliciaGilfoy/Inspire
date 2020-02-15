@@ -14,8 +14,16 @@ export default class Weather {
     let string = this.type[0].main
     if (string = "Clouds") {
       return `<i class="fas fa-cloud"></i>`
+    } if (string = "Rain") {
+      return `<i class="fas fa-cloud-rain"></i>`
+    } if (string = "Snow") {
+      return `<i class="fas fa-snowflake"></i>`
+    } if (string = "Sunny") {
+      return `<i class="fas fa-sun"></i>`
+    } if (string = "Extreme") {
+      return `<i class="fas fa-bolt"></i>`
     } else {
-      return '<i class="fas fa-rainbow"></i>'
+      return '<i class="fas fa-cloud-sun-rain"></i>'
     }
   }
 

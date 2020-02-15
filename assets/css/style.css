@@ -1,6 +1,5 @@
 #todo-error{
   color: red;
-  font-size: 2em;
 }
 
 body{
@@ -25,7 +24,7 @@ body{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
 }
 
 footer{
@@ -35,5 +34,32 @@ footer{
 
 #quote-box{
   background-color: rgba(39, 38, 38, 0.575);
-  color: turquoise;  
+  color: white;
+}
+
+.todo-row{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  margin-top: 1rem
+}
+
+.todo-form{
+  display: flex;
+  flex-direction: row;
+}
+
+.myModal{
+  background-color: rgba(26, 25, 25, 0.733);
+  color: white;
+  width: fit-content;
+}
+
+.todo-button{
+  color: white ;
+}
+
+.todos{
+  color: white;
+  border: 1px solid black;
 }

@@ -18,27 +18,62 @@
 
 
 <body id="bg-image">
-	<header class="container-fluid">
+	<main class="container-fluid">
 		<div class="row weather-row">
 			<div id="weather">
-				<!-- <div class="col">
-					<h2><i class="fas fa-sun"></i> 70 F</h2>
-				</div>
-				<div class="col text-center">
-					<h3>Boise</h3>
-				</div> -->
 			</div>
 		</div>
-	</header>
+		<div class="row todo-row">
+			<!-- Button trigger modal -->
+			<button type="button" class="btn btn-secondary todo-button col-3" data-toggle="modal" data-target="#todoModal">
+				Create a New Todo List
+			</button>
 
-
-	<div>
-		A Todo List
-		<div id="todo-error"></div>
-		<form onsubmit=""></form>
-		<div id="todos"></div>
-	</div>
-
+			<!-- Modal -->
+			<div class="modal fade" width="fit-content" id="todoModal" tabindex="-1" role="dialog"
+				aria-labelledby="ModalTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content myModal">
+						<div class="modal-header">
+							<h5 class="modal-title" id="ModalTitle">Create A New Todo List</h5>
+							<button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form onsubmit="app.todoController.addTodo(event)" class="todo-form form-inline">
+								<div class="form-group">
+									<input type="text" name="todoName" id="todoName" class="form-control" placeholder="Enter list name..."
+										aria-describedby="helpId">
+								</div>
+								<button type="submit" class="btn btn-primary m-2"><i class="fas fa-plus"></i></button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-3 bg-secondary todos">
+				<div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle m-1" type="button" id="dropdownMenuButton"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						stats
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item">Total Todos: <span id="conpleted">0</span></a>
+						<a class="dropdown-item">Completed Todos: <span id="conpleted">0</span></a>
+					</div>
+				</div>
+				<h2 class="text-center">Todos:</h2>
+				<div id="todos">
+					<!-- <div class="form-check">
+						<input class="form-check-input" type="checkbox" value="true" id="this.id">
+						<label class="form-check-label" for="this.id">
+						Default checkbox <i onclick="app.todoController.delete(${this._id})" class="fas fa-times text-danger"></i>
+						</label>
+					</div> -->
+				</div>
+			</div>
+	</main>
 	<footer class="container-fluid">
 		<div class="row quote-row">
 			<div class="col-8 text-center" id="quote-box">
