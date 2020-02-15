@@ -1,12 +1,19 @@
-import QuoteService from "../services/quote-service.js";
+import store from "../store.js"
+import quoteService from "../services/quote-service.js";
 
-//TODO Create methods for constructor, and rendering the quote to the page
-//      (be sure to review the HTML as an element already was put there for you)
+function _drawQuote() {
+  let quote = store.State.quote
+  document.getElementById("quote-box").innerHTML = quote.Template
+}
+
+
 export default class QuoteController {
 
 
 
   constructor() {
-    console.log("quote controller works")
+    store.subscribe("quote", _drawQuote)
+
+    quoteService.getQuote()
   }
 }
