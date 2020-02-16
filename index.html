@@ -26,7 +26,7 @@
 		<div class="row todo-row">
 			<!-- Button trigger modal -->
 			<button type="button" class="btn btn-secondary todo-button col-3" data-toggle="modal" data-target="#todoModal">
-				Create a New Todo List
+				Click to Add to To Do List
 			</button>
 
 			<!-- Modal -->
@@ -35,7 +35,7 @@
 				<div class="modal-dialog modal-dialog-centered" role="document">
 					<div class="modal-content myModal">
 						<div class="modal-header">
-							<h5 class="modal-title" id="ModalTitle">Create A New Todo List</h5>
+							<h5 class="modal-title" id="ModalTitle">Add to Your To Do list:</h5>
 							<button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
@@ -43,7 +43,7 @@
 						<div class="modal-body">
 							<form onsubmit="app.todoController.addTodo(event)" class="todo-form form-inline">
 								<div class="form-group">
-									<input type="text" name="todoName" id="todoName" class="form-control" placeholder="Enter list name..."
+									<input type="text" name="todoName" id="todoName" class="form-control" placeholder="Enter new to do..."
 										aria-describedby="helpId">
 								</div>
 								<button type="submit" class="btn btn-primary m-2"><i class="fas fa-plus"></i></button>
@@ -59,24 +59,25 @@
 						stats
 					</button>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item">Total Todos: <span id="conpleted">0</span></a>
-						<a class="dropdown-item">Completed Todos: <span id="conpleted">0</span></a>
+						<a class="dropdown-item">Total: <span id="total">0</span></a>
+						<a class="dropdown-item">Completed: <span id="completed">0</span></a>
 					</div>
 				</div>
-				<h2 class="text-center">Todos:</h2>
+				<h2 class="text-center">To Dos:</h2>
 				<div id="todos">
-					<!-- <div class="form-check">
-						<input class="form-check-input" type="checkbox" value="true" id="this.id">
-						<label class="form-check-label" for="this.id">
-						Default checkbox <i onclick="app.todoController.delete(${this._id})" class="fas fa-times text-danger"></i>
-						</label>
-					</div> -->
 				</div>
 			</div>
 	</main>
+	<main class="container-fluid">
+		<div class="row time-row">
+			<col-12 class="clock">
+				<h1 class="display-1 rounded-lg" id="time"></h1>
+			</col-12>
+		</div>
+	</main>
 	<footer class="container-fluid">
 		<div class="row quote-row">
-			<div class="col-8 text-center" id="quote-box">
+			<div class="col-8 text-center rounded-lg" id="quote-box">
 			</div>
 		</div>
 	</footer>

@@ -6,18 +6,29 @@ export default class Todo {
     this.description = data.description || ""
   }
 
+  get button() {
+    if (!this.completed) {
+      return `
+      <i class="far fa-square text-dark" onclick="app.todoController.toggleTodoStatus('${this._id}', true)"></i>
+    `
+    }
+    else {
+      return `
+      <i class="fas fa-check-square text-success" onclick="app.todoController.toggleTodoStatus('${this._id}', false)"></i>
+      `
+    }
+  }
 
   get Template() {
     return `
-    <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="true" id="${this._id}">
-    <label class="form-check-label" for="${this._id}">
-      ${this.description}  <i onclick="app.todoController.removeTodo('${this._id})" class="fas fa-times text-danger pl-2"></i>
-    </label>
-  </div>
+    <div class="todo-item">
+    ${this.button}
+		<h5 class="px-2">${this.description}</h5>
+    <i onclick="app.todoController.removeTodo('${this._id}')" class="fas fa-times text-danger"></i>
+    </div>
   `
   }
 
 
-
 }
+

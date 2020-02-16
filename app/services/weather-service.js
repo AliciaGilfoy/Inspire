@@ -14,6 +14,7 @@ function getIcon() {
 class WeatherService {
   async getWeather() {
     let res = await weatherApi.get();
+    console.log(res)
     store.commit("weather", new Weather(res.data));
     console.log(store.State.weather)
     console.log("type from store", store.State.weather.type[0].main)

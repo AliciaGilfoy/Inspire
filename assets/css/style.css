@@ -63,3 +63,27 @@ footer{
   color: white;
   border: 1px solid black;
 }
+
+#todos{
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.todo-item{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.time-row{
+  justify-content: center;
+  align-items: center;
+  height: 40rem;
+  color: white;
+  text-shadow: 1px 1px black;
+}
+
+.display-1{
+  background-color: rgba(39, 38, 38, 0.575);
+}

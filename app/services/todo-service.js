@@ -1,6 +1,8 @@
 import store from "../store.js";
 import Todo from "../models/Todo.js";
 
+
+
 // @ts-ignore
 const _todoApi = axios.create({
   baseURL: "https://bcw-sandbox.herokuapp.com/api/Alicia/todos/",
@@ -9,9 +11,13 @@ const _todoApi = axios.create({
 
 class TodoService {
   getTodos() {
-    console.log("Getting the Todo List");
-    _todoApi.get();
-    //TODO Handle this response from the server
+    _todoApi.get()
+      .then(res => {
+        let apiTodos = res.data.data.map(t => new Todo(t))
+        store.commit("todos", apiTodos)
+      }).catch(error => {
+        console.error(error);
+      });
   }
 
   addTodo(todo) {
@@ -26,24 +32,31 @@ class TodoService {
       });
   }
 
-  toggleTodoStatus(todoId) {
-    let todo = store.State.todos.find(todo => todo._id == todoId);
-    //TODO Make sure that you found a todo,
-    //		and if you did find one
-    //		change its completed status to whatever it is not (ex: false => true or true => false)
-
-    _todoApi.put(todoId, todo);
-    //TODO do you care about this data? or should you go get something else?
+  toggleTodoStatus(todoId, check) {
+    let newTodo = store.State.todos.find(todo => todo._id == todoId)
+    newTodo.completed = check
+    _todoApi.put(todoId, newTodo)
+      .then(res => {
+        let todo = store.State.todos.find(todo => todo._id == todoId)
+        for (let prop in newTodo)
+          todo[prop] = newTodo[prop]
+        store.commit("todos", store.State.todos)
+      }).catch(error => {
+        console.error(error);
+      });
   }
 
   removeTodo(todoId) {
-    //TODO Work through this one on your own
-    //		what is the request type
-    //		once the response comes back, what do you need to insure happens?
+    _todoApi.delete(todoId)
+      .then(res => {
+        let filteredTodos = store.State.todos.filter(t => t._id != todoId)
+        store.commit("todos", filteredTodos)
+      }).catch(error => {
+        console.error(error);
+      });
   }
 
   constructor() {
-    console.log("todo service works")
   }
 }
 

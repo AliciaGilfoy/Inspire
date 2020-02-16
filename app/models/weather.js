@@ -11,16 +11,15 @@ export default class Weather {
   }
 
   get IconTemplate() {
-    let string = this.type[0].main
-    if (string = "Clouds") {
+    if (this.type[0].main == "Clouds") {
       return `<i class="fas fa-cloud"></i>`
-    } if (string = "Rain") {
+    } else if (this.type[0].main == "Rain") {
       return `<i class="fas fa-cloud-rain"></i>`
-    } if (string = "Snow") {
+    } else if (this.type[0].main == "Snow") {
       return `<i class="fas fa-snowflake"></i>`
-    } if (string = "Sunny") {
+    } else if (this.type[0].main == "Sunny") {
       return `<i class="fas fa-sun"></i>`
-    } if (string = "Extreme") {
+    } else if (this.type[0].main == "Extreme") {
       return `<i class="fas fa-bolt"></i>`
     } else {
       return '<i class="fas fa-cloud-sun-rain"></i>'
